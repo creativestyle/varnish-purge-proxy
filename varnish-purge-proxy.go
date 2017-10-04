@@ -130,7 +130,7 @@ func serveHTTP(port int, host string, service providers.Service) {
 
 func requestHandler(w http.ResponseWriter, r *http.Request, client *http.Client, service providers.Service) {
 	// check that request is PURGE and has X-Purge-Regex header set
-	if _, exists := r.Header["X-Purge-Regex"]; !exists || r.Method != "PURGE" {
+	if _, exists := r.Header["X-Magento-Tags-Pattern"]; !exists || r.Method != "PURGE" {
 		if *debug {
 			log.Printf("Error invalid request: %s, %s\n", r.Header, r.Method)
 		}
